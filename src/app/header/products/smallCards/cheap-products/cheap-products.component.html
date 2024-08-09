@@ -1,0 +1,17 @@
+<div class="cards">
+  <ng-container *ngFor=" let product of products">
+    <mat-card  *ngIf="getGender == product.gender || getGender == undifend ">
+        <mat-card-header>
+            <mat-card-title >
+               {{product.title}}
+            </mat-card-title>
+        </mat-card-header>
+        <img mat-card-image [src]='product.imgPath'>
+        <mat-card-content>{{product.price}}</mat-card-content>
+        <mat-card-footer>
+          <button mat-button (click)="openDialog(product.id)">Details</button>
+          <button mat-button (click)="addToCart(product)">Add to cart</button>
+        </mat-card-footer>
+    </mat-card>
+  </ng-container>
+</div>

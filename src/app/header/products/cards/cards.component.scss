@@ -1,0 +1,60 @@
+@use '@angular/material' as mat;
+@use '../../../../m3-theme.scss';
+
+@include mat.core();
+
+hr{
+    width: 90%;
+}
+
+.cards{
+  padding-bottom: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  column-gap: 7em;
+  row-gap: 3em;
+  align-content: center;
+  justify-content: space-around;
+}
+
+.mat-mdc-card {
+
+  display: flex;
+  justify-content: space-between;
+}
+
+img{
+  height: 350px;
+}
+
+mat-card{
+    width: 350px;
+    font-weight: bold;
+    box-shadow: 8px 3px 3px rgba(mat.get-theme-color(m3-theme.$light-theme, primary, 70), 1);
+    border-top: 1px solid rgb(211, 104, 233);
+    border-left: 1px solid rgb(211, 104, 233);
+    border-bottom: 1px solid rgb(211, 104, 233);
+}
+mat-card-footer{
+    text-align: right;
+}
+
+button:hover{
+    background-color: rgba(mat.get-theme-color(m3-theme.$light-theme, primary, 50), 1);
+    color: white;
+}
+
+
+.container{
+    height: 100%;
+    width: 90%;
+    margin: 50px auto;
+    align-content: center;
+    align-items: center;
+
+}
+
+mat-card-footer{
+    padding: 10px;
+
+}

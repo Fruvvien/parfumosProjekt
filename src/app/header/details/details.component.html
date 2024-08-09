@@ -1,0 +1,14 @@
+<ng-container *ngFor="let product of products">
+  <ng-container *ngIf="product.id == data.id" >
+    <mat-dialog-content  >
+
+      <h2 style="font-weight: bold;" mat-dialog-title>{{product.title}}</h2>
+      <img style="height: 350px;" [src]="product.imgPath">
+      <p style="font-weight: bold;">{{product.content}}</p>
+    </mat-dialog-content>
+    <mat-dialog-actions>
+      <button style="font-weight: bold;" mat-button (click)="onNoClick()"  >Cancel</button>
+      <button style="font-weight: bold;" mat-button (click)="addToCart(product)">Add to cart</button>
+    </mat-dialog-actions>
+  </ng-container>
+</ng-container>

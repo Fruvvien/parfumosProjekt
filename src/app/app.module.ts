@@ -1,18 +1,65 @@
 import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { HeaderComponent } from './header/header.component';
+import {MatToolbarModule} from '@angular/material/toolbar';
+import { BrowserModule } from '@angular/platform-browser';
+import {MatButtonModule} from '@angular/material/button';
+import {MatCardModule} from '@angular/material/card';
+import { ProfileComponent } from './header/profiles/profile/profile.component';
+import { CardsComponent } from './header/products/cards/cards.component';
+import {MatSidenavModule} from '@angular/material/sidenav';
+import {MatIconModule} from '@angular/material/icon';
+import { BrowserAnimationsModule, NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { CheapProductsComponent } from './header/products/smallCards/cheap-products/cheap-products.component';
+import { SidenavComponentComponent } from './header/sidenavContent/sidenav-component/sidenav-component.component';
+import {MatListModule} from '@angular/material/list';
+import { HTTP_INTERCEPTORS, HttpClient, HttpClientModule } from '@angular/common/http';
+import { RouterModule } from '@angular/router';
+import {MatDialogModule} from '@angular/material/dialog';
+import { DetailsComponent } from './header/details/details.component';
+import { productReducer } from './store/product.reducer';
+import { StoreModule } from '@ngrx/store';
+import { CartComponent } from './header/cart/cart/cart.component';
+
+
+
+
+
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    HeaderComponent,
+    ProfileComponent,
+    CardsComponent,
+    CheapProductsComponent,
+    SidenavComponentComponent,
+    DetailsComponent,
+    CartComponent,
+
+
+
   ],
   imports: [
+    AppRoutingModule,
+    MatToolbarModule,
     BrowserModule,
-    AppRoutingModule
+    MatButtonModule,
+    MatCardModule,
+    MatSidenavModule,
+    MatIconModule,
+    BrowserAnimationsModule,
+    NoopAnimationsModule,
+    MatListModule,
+    HttpClientModule,
+    MatDialogModule,
+    StoreModule.forRoot({productt: productReducer})
+
   ],
-  providers: [],
+  providers: [
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

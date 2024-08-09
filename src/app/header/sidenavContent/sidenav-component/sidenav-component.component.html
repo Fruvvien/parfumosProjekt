@@ -1,0 +1,16 @@
+
+<mat-nav-list>
+  <button  mat-list-item routerLink="product" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+    <span class="man"> </span>
+    <span class="woman"></span>
+    <span style="color: white;">Mindkettő!</span>
+</button >
+    <button mat-list-item [routerLink]="['product','1']" routerLinkActive="active">
+        <span class="man"></span>
+        <span style="color: white;">Férfi</span>
+    </button >
+    <button mat-list-item [routerLink]="['product','0']" routerLinkActive="active">
+        <span class="woman"></span>
+        <span style="color: white;">Női</span>
+    </button >
+</mat-nav-list>
