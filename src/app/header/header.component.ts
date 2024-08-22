@@ -12,7 +12,7 @@ import { cartProductList } from '../store/product.selectors';
 
 })
 export class HeaderComponent implements OnInit {
-  cartItemCount = 0;
+  cartQuantityNumber : number ;
   cartList$! : Observable<Product[]>;
 
   constructor( private store: Store<AppState>){
@@ -22,7 +22,10 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.cartList$ =  this.store.select(cartProductList).pipe(tap(v => this.cartItemCount =+ v.length));
+    this.cartList$ =  this.store.select(cartProductList).pipe( );
+    this.cartList$.subscribe(v =>{
+      v.map( c =>  this.cartQuantityNumber =+ c.quantity )
+    })
 
   }
 

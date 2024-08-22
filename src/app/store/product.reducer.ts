@@ -15,8 +15,7 @@ const initialState: AppState = {
 export const productReducer = createReducer(initialState,
   on(loadProducts, (state, {productList}) => ({...state, product: productList})),
   on(addToCartAction, (state, {productItem}) => {
-    const findCartItem = state.cart?.find(item => item.id === productItem.id && item.productLevel === item.productLevel); //itt keressük meg, hogy létezik-e a termék a kosárban
-
+    const findCartItem = state.cart?.find(item => item.id === productItem.id && item.productLevel === productItem.productLevel ); //itt keressük meg, hogy létezik-e a termék a kosárban
     let newCart
     if(findCartItem){
       newCart = state.cart?.map(

@@ -48,7 +48,7 @@ export class CheapProductsComponent implements OnInit{
       height: '600px',
       data: {
         id: id,
-        name: "simpleProduct"
+        name: "SimpleProduct"
       }
     });
 

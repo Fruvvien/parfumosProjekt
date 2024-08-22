@@ -1,4 +1,4 @@
-<mat-toolbar>
+<mat-toolbar >
     <button mat-button  (click)="sidenav.toggle()"  style="color: white;">
       <mat-icon style="margin-right: 0;">menu</mat-icon>
     </button>
@@ -8,8 +8,13 @@
     <button  routerLink="product" routerLinkActive="active" mat-button> <span class="product"></span></button>
     <button   routerLink="profile" routerLinkActive="active" mat-button> <span class="profile"></span></button>
     <span class="example-spacer"></span>
-    <button  mat-button routerLink="cart"><span class="quantity" *ngIf="cartList$ | async"><ng-continer *ngIf="cartItemCount > 0">{{cartItemCount}}</ng-continer></span> <span class="cart"></span></button>
-</mat-toolbar>
+    
+    <button  mat-button routerLink="cart"><span class="quantity">
+      
+      <ng-continer *ngIf="cartQuantityNumber > 0">{{  cartQuantityNumber}}</ng-continer></span> <span class="cart"></span>
+   
+    </button>
+  </mat-toolbar>
 <mat-sidenav-container>
   <mat-sidenav #sidenav mode="side"  [style.width]="'250px'">
     <app-sidenav-component></app-sidenav-component>

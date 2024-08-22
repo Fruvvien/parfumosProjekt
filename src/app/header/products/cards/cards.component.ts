@@ -56,7 +56,7 @@ export class CardsComponent implements OnInit{
       height: '600px',
       data: {
         id: id,
-        name: "finalProduct"
+        name: "FinalProduct"
       }
 
     });
