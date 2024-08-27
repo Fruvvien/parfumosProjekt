@@ -22,6 +22,7 @@ import { DetailsComponent } from './header/details/details.component';
 import { productReducer } from './store/product.reducer';
 import { StoreModule } from '@ngrx/store';
 import { CartComponent } from './header/cart/cart/cart.component';
+import { SuccessfulPaymentDialogComponent } from './header/successful-payment-dialog/successful-payment-dialog.component';
 
 
 
@@ -38,6 +39,7 @@ import { CartComponent } from './header/cart/cart/cart.component';
     SidenavComponentComponent,
     DetailsComponent,
     CartComponent,
+    SuccessfulPaymentDialogComponent,
 
 
 

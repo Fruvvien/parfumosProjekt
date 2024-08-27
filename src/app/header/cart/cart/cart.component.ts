@@ -1,10 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-import { BehaviorSubject, Observable, tap } from 'rxjs';
+import {  map, Observable } from 'rxjs';
 import { Product } from '../../../model/product.model';
 import { Store } from '@ngrx/store';
 import { AppState } from '../../../store/product.reducer';
 import { cartProductList } from '../../../store/product.selectors';
-import {  addToCartAction, addToQuantity, minusQuantity, removeFromFinalCartAction } from '../../../store/product.action';
+import { addToQuantity, deleteAllProductsFromCart, minusQuantity, removeFromFinalCartAction } from '../../../store/product.action';
+
+import { MatDialog } from '@angular/material/dialog';
+import { SuccessfulPaymentDialogComponent } from '../../successful-payment-dialog/successful-payment-dialog.component';
 
 @Component({
   selector: 'app-cart',
@@ -14,14 +17,17 @@ import {  addToCartAction, addToQuantity, minusQuantity, removeFromFinalCartActi
 export class CartComponent implements OnInit{
   quantity$!: Observable<any>;
   cartList$! : Observable<Product[]>;
-  constructor(private store: Store<AppState>){
+  isCartEmpty$ : Observable<boolean>;
+  constructor(private store: Store<AppState>, private dialoge: MatDialog){
 
   }
 
   ngOnInit(): void {
 
     this.cartList$ = this.store.select(cartProductList).pipe();
-
+    this.isCartEmpty$ = this.cartList$.pipe(
+      map(cartList => cartList.length === 0)
+    );
 
   }
 
@@ -40,6 +46,18 @@ export class CartComponent implements OnInit{
     }else{
       this.store.dispatch(removeFromFinalCartAction({productid: item.id, productLevel: item.productLevel}));
     }
+
+  }
+  payMethod(){
+      this.dialoge.open(SuccessfulPaymentDialogComponent,
+        {
+          width: '200px',
+          height: '200px',
+
+        }
+      )
+
+
 
   }
 }

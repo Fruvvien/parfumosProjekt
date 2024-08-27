@@ -1,6 +1,6 @@
 import { createReducer, on } from "@ngrx/store";
 import { Product } from "../model/product.model";
-import { addToCartAction,  addToQuantity,  loadProducts, minusQuantity, removeFromFinalCartAction } from "./product.action";
+import { addToCartAction,  addToQuantity,  deleteAllProductsFromCart,  loadProducts, minusQuantity, removeFromFinalCartAction } from "./product.action";
 
 export interface AppState{
   product: Product[];
@@ -80,7 +80,9 @@ export const productReducer = createReducer(initialState,
       console.log('new state:', newState)
       return newState
     }
-  )
+  ),
+
+  on(deleteAllProductsFromCart, (state)=> ({...state, cart: [] })),
 
 
 

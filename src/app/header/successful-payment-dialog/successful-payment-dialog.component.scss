@@ -1,0 +1,15 @@
+@use '@angular/material' as mat;
+@use '../../../m3-theme.scss';
+
+@include mat.core();
+
+.payButton{
+  background-color: rgba(mat.get-theme-color(m3-theme.$light-theme, primary, 50), 1);
+  color: white;
+}
+
+
+
+.payButton:hover{
+  background-color: rgb(211, 104, 233);
+}

@@ -6,6 +6,6 @@ export const addToCartAction = createAction('[PRODUCT] add product', props<{prod
 export const removeFromFinalCartAction = createAction('[PRODUCT] remove product', props<{productid: number, productLevel: string}>());
 export const addToQuantity = createAction('[PRODUCT] add to quantity', props <{ productid: number, productLevel: string}>());
 export const minusQuantity = createAction('[PRODUCT] minus quantity', props <{ productid: number, productLevel: string}>())
-
+export const deleteAllProductsFromCart = createAction('[PRODUCT] delete products');
 
 

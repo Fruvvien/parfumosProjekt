@@ -8,11 +8,13 @@
     <button  routerLink="product" routerLinkActive="active" mat-button> <span class="product"></span></button>
     <button   routerLink="profile" routerLinkActive="active" mat-button> <span class="profile"></span></button>
     <span class="example-spacer"></span>
-    
-    <button  mat-button routerLink="cart"><span class="quantity">
-      
-      <ng-continer *ngIf="cartQuantityNumber > 0">{{  cartQuantityNumber}}</ng-continer></span> <span class="cart"></span>
-   
+
+    <button  mat-button routerLink="cart">
+      <span class="quantity" >
+          <ng-continer *ngIf="cartQuantityNumber >0">{{ cartQuantityNumber}}</ng-continer>
+      </span>
+      <span class="cart">
+      </span>
     </button>
   </mat-toolbar>
 <mat-sidenav-container>

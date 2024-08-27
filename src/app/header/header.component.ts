@@ -22,9 +22,9 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.cartList$ =  this.store.select(cartProductList).pipe( );
+    this.cartList$ =  this.store.select(cartProductList).pipe();
     this.cartList$.subscribe(v =>{
-      v.map( c =>  this.cartQuantityNumber =+ c.quantity )
+         this.cartQuantityNumber =   v.reduce((total, c) => total + c.quantity, 0); //A reduce függvény egy erőteljes eszköz az Array-eken való műveletek végrehajtására, amely az egész tömböt egyetlen értékké alakítja.
     })
 
   }

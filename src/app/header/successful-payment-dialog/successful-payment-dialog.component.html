@@ -1,0 +1,16 @@
+
+  <mat-dialog-content *ngIf="isTrue$ ; else isFalse"  style="text-align: center;">
+    <h1 >Sikeres vásárlás</h1>
+    <button mat-flat-button class="payButton"  routerLink="product" (click)="close()">Vissza a főoldalra</button>
+  </mat-dialog-content>
+  <ng-template #isFalse style="text-align: center;">
+    <mat-dialog-content >
+      <h1>Fizetés beleegyezés:</h1>
+    </mat-dialog-content>
+    <mat-dialog-actions>
+      <button mat-flat-button  class="payButton" (click)="close()">Mégse</button>
+      <button  mat-flat-button class="payButton" (click)="payment()">Fizetés</button>
+    </mat-dialog-actions>
+  </ng-template>
+
+

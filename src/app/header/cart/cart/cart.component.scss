@@ -126,3 +126,18 @@ mat-card-footer{
 
 
 }
+
+.payButton{
+  background-color: rgba(mat.get-theme-color(m3-theme.$light-theme, primary, 50), 1);
+  color: white;
+}
+.payButtonDiv{
+  padding-top: 10px;
+  width: 90%;
+  text-align: right;
+}
+
+
+.payButton:hover{
+  background-color: rgb(211, 104, 233);
+}
