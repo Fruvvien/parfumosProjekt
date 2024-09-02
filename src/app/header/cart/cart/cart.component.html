@@ -21,8 +21,8 @@
         <mat-card-content>{{cartItem.quantity}}db | {{cartItem.price}}</mat-card-content>
       </mat-card-footer>
     </mat-card>
-    <div class="payButtonDiv">
-      <button (click)="payMethod()"  class="payButton" mat-flat-button>Pay</button>
+    <div class="payButtonDiv" >
+      <button (click)="payMethod()"  class="payButton" mat-flat-button (mouseenter)="onMouse()" (mouseleave)="offMouse()">{{totalPrice}}</button>
     </div>
   </ng-template>
 

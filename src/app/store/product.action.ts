@@ -7,5 +7,7 @@ export const removeFromFinalCartAction = createAction('[PRODUCT] remove product'
 export const addToQuantity = createAction('[PRODUCT] add to quantity', props <{ productid: number, productLevel: string}>());
 export const minusQuantity = createAction('[PRODUCT] minus quantity', props <{ productid: number, productLevel: string}>())
 export const deleteAllProductsFromCart = createAction('[PRODUCT] delete products');
+export const sumPrice = createAction('[PRODUCT] sum price', props <{price: number}>());
+export const minusPrice = createAction('[PRODUCT] minus price', props <{price: number}>())
 
 

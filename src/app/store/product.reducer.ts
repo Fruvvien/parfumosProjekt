@@ -1,15 +1,20 @@
 import { createReducer, on } from "@ngrx/store";
 import { Product } from "../model/product.model";
-import { addToCartAction,  addToQuantity,  deleteAllProductsFromCart,  loadProducts, minusQuantity, removeFromFinalCartAction } from "./product.action";
+import { addToCartAction,  addToQuantity,
+  deleteAllProductsFromCart,
+  loadProducts, minusPrice, minusQuantity, removeFromFinalCartAction,
+  sumPrice} from "./product.action";
 
 export interface AppState{
   product: Product[];
   cart: Product[];
+  totalPrice: number;
 }
 
 const initialState: AppState = {
   product: [],
   cart: [],
+  totalPrice: 0,
 }
 
 export const productReducer = createReducer(initialState,
@@ -59,7 +64,6 @@ export const productReducer = createReducer(initialState,
         })
       };
 
-      console.log('new state:', newState)
       return newState
     }
   ),
@@ -76,13 +80,27 @@ export const productReducer = createReducer(initialState,
           }
         })
       };
-
-      console.log('new state:', newState)
       return newState
     }
   ),
 
-  on(deleteAllProductsFromCart, (state)=> ({...state, cart: [] })),
+  on(deleteAllProductsFromCart, (state)=> ({...state, cart: [], totalPrice: 0 })),
+  on(sumPrice,(state, {price}) =>{
+
+      return{
+        ...state,
+        totalPrice: state.totalPrice + price
+
+      }
+  } ),
+  on(minusPrice,(state, {price}) =>{
+
+    return{
+      ...state,
+      totalPrice: state.totalPrice - price
+
+    }
+} )
 
 
 

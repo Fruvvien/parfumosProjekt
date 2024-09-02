@@ -8,7 +8,7 @@ import { AppState } from '../../../../store/product.reducer';
 import { Observable } from 'rxjs';
 import { Product } from '../../../../model/product.model';
 import { productList } from '../../../../store/product.selectors';
-import { addToCartAction } from '../../../../store/product.action';
+import { addToCartAction, addToQuantity, sumPrice } from '../../../../store/product.action';
 
 @Component({
   selector: 'app-cheap-products',
@@ -55,11 +55,20 @@ export class CheapProductsComponent implements OnInit{
   }
 
   addToCart(item: Product){
-    item.productLevel = "SimpleProduct";
-    item = {
-      ...item, quantity: item.quantity = 1   //az ngrx-ben gyakori az immutable állapotkezelés, ami megköveteli, hogy új objektumokat hozz létre aa módosításokkal.
+    if(item.quantity === undefined ){
+      item.productLevel = "SimpleProduct";
+      item = {
+        ...item, quantity: item.quantity = 1   //az ngrx-ben gyakori az immutable állapotkezelés, ami megköveteli, hogy új objektumokat hozz létre aa módosításokkal.
+      }
+      this.store.dispatch(addToCartAction({productItem: item}))
+      this.store.dispatch(sumPrice({price: item.price}));
+
+
     }
-    this.store.dispatch(addToCartAction({productItem: item }))
+    else{
+      this.store.dispatch(addToQuantity({productid: item.id, productLevel: item.productLevel}));
+      this.store.dispatch(sumPrice({price: item.price}));
+    }
   }
 
 

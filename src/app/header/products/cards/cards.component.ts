@@ -7,7 +7,7 @@ import { fetchDataService } from '../../../fetchData/fetchDataService';
 import { Store } from '@ngrx/store';
 import { AppState } from '../../../store/product.reducer';
 import { cartProductList, productList } from '../../../store/product.selectors';
-import { addToCartAction, addToQuantity, loadProducts, minusQuantity } from '../../../store/product.action';
+import { addToCartAction, addToQuantity, loadProducts, minusQuantity, sumPrice } from '../../../store/product.action';
 import { Product } from '../../../model/product.model';
 
 @Component({
@@ -28,7 +28,6 @@ export class CardsComponent implements OnInit{
   ngOnInit(): void {
     this.storageFetchedDatas();
     this.productList$ =  this.store.select(productList);
-
     this.store.dispatch(loadProducts({productList: this.products}));
 
     this.route.params.subscribe(
@@ -72,10 +71,13 @@ export class CardsComponent implements OnInit{
         ...item, quantity: item.quantity = 1   //az ngrx-ben gyakori az immutable állapotkezelés, ami megköveteli, hogy új objektumokat hozz létre aa módosításokkal.
       }
       this.store.dispatch(addToCartAction({productItem: item}))
+      this.store.dispatch(sumPrice({price: item.price}));
+
 
     }
     else{
-      this.store.dispatch(addToQuantity({productid: item.id, productLevel: item.productLevel}))
+      this.store.dispatch(addToQuantity({productid: item.id, productLevel: item.productLevel}));
+      this.store.dispatch(sumPrice({price: item.price}));
     }
 
 
