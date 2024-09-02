@@ -74,8 +74,8 @@ export class CartComponent implements OnInit{
   payMethod(){
       this.dialoge.open(SuccessfulPaymentDialogComponent,
         {
-          width: '150px',
-          height: '150px',
+          width: '650px',
+          height: '520px',
 
         }
       )

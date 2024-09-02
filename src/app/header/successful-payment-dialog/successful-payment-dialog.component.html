@@ -1,15 +1,109 @@
 
-  <mat-dialog-content *ngIf="isTrue$ ; else isFalse"  style="text-align: center;">
+  <mat-dialog-content *ngIf="isTrue$ | async"  style="text-align: center;">
     <h1 >Sikeres vásárlás</h1>
     <button mat-flat-button class="payButton"  routerLink="product" (click)="close()">Vissza a főoldalra</button>
   </mat-dialog-content>
-  <ng-template #isFalse style="text-align: center;">
+
+  <mat-dialog-content *ngIf="cardDatasIsTrue; else cardDataIsFalse" >
+    <form class="example-form">
+      <table class="example-full-width" cellspacing="0">
+        <tr>
+          <td>
+              <mat-form-field class="example-full-width">
+                <mat-label>KÁRTYÁN SZEREPLŐ NÉV</mat-label>
+                <input matInput>
+              </mat-form-field>
+
+              <mat-form-field class="example-full-width">
+                <mat-label>KÁRTYASZÁM</mat-label>
+                <input matInput>
+              </mat-form-field>
+          </td>
+        </tr>
+        <tr >
+          <td >
+            <mat-form-field class="example-full-width">
+              <mat-label>DATE</mat-label>
+              <input matInput >
+            </mat-form-field>
+         </td>
+          <td >
+            <mat-form-field class="example-full-width">
+              <mat-label>MM/YY</mat-label>
+              <input  matInput >
+            </mat-form-field>
+          </td>
+          <td >
+            <mat-form-field class="example-full-width">
+              <mat-label>CVC</mat-label>
+              <input matInput maxlength="3" >
+            </mat-form-field>
+          </td>
+        </tr>
+        <tr class="payButtonDiv">
+          <button mat-flat-button  class="payButton" (click)="back()">Vissza</button>
+          <button  mat-flat-button class="payButton" (click)="payment()">Fizetés</button>
+        </tr>
+      </table>
+
+      <!-- <table  class="example-full-width" cellspacing="0">
+
+
+      </table>
+      <table class="example-full-width"  cellspacing="0">
+
+      </table> -->
+
+    </form>
+  </mat-dialog-content>
+
+  <ng-template #cardDataIsFalse  style="text-align: center;">
     <mat-dialog-content >
-      <h2>Fizetés beleegyezés</h2>
+      <h2>Adatok beírása:</h2>
+      <form class="example-form">
+      <table class="example-full-width" cellspacing="0">
+        <tr>
+          <td>
+              <mat-form-field class="example-full-width">
+                <mat-label>Vezetéknév</mat-label>
+                <input type="text" matInput>
+            </mat-form-field>
+          </td>
+          <td>
+              <mat-form-field class="example-full-width">
+                <mat-label>Keresztnév</mat-label>
+                <input type="text" matInput>
+              </mat-form-field>
+          </td>
+        </tr>
+      </table>
+
+        <p>
+          <mat-form-field class="example-full-width">
+            <mat-label>Cím</mat-label>
+            <textarea type="text" matInput ></textarea>
+          </mat-form-field>
+        </p>
+
+        <table class="example-full-width" cellspacing="0">
+          <tr>
+            <td>
+              <mat-form-field class="example-full-width">
+                <mat-label>Város</mat-label>
+                <input type="text" matInput placeholder="Budapest">
+              </mat-form-field>
+              <mat-form-field class="example-full-width">
+                <mat-label>Irányítószám</mat-label>
+                <input  matInput #postalCode maxlength="4" placeholder="1234">
+              </mat-form-field>
+            </td>
+          </tr>
+        </table>
+      </form>
     </mat-dialog-content>
     <mat-dialog-actions>
       <button mat-flat-button  class="payButton" (click)="close()">Mégse</button>
-      <button  mat-flat-button class="payButton" (click)="payment()">Fizetés</button>
+      <button  mat-flat-button class="payButton" (click)="cardDatas()">Tovább</button>
     </mat-dialog-actions>
   </ng-template>
 

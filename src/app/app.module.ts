@@ -23,6 +23,9 @@ import { productReducer } from './store/product.reducer';
 import { StoreModule } from '@ngrx/store';
 import { CartComponent } from './header/cart/cart/cart.component';
 import { SuccessfulPaymentDialogComponent } from './header/successful-payment-dialog/successful-payment-dialog.component';
+import {MatInputModule} from '@angular/material/input';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {FormsModule} from '@angular/forms';
 
 
 
@@ -57,7 +60,10 @@ import { SuccessfulPaymentDialogComponent } from './header/successful-payment-di
     MatListModule,
     HttpClientModule,
     MatDialogModule,
-    StoreModule.forRoot({productt: productReducer})
+    StoreModule.forRoot({productt: productReducer}),
+    MatInputModule,
+    MatFormFieldModule,
+    FormsModule
 
   ],
   providers: [
