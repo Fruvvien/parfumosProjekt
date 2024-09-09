@@ -3,17 +3,15 @@
 
 @include mat.core();
 
-.payButton{
+.paymentActionButtons{
   background-color: rgba(mat.get-theme-color(m3-theme.$light-theme, primary, 50), 1);
   color: white;
   text-align: center;
 
+
 }
 
-.payButtonDiv{
-  display: flex;
-  justify-content: space-evenly;
-}
+
 
 
 .payButton:hover{
@@ -24,17 +22,48 @@ mat-dialog-actions{
   justify-content: center;
 }
 
-.example-form {
-  min-width: 150px;
-  max-width: 500px;
+input:not(.radioButtons){
   width: 100%;
+  padding: 10px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+#threeCardDatas{
+  width: 22%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+#threeCardDatasDiv{
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+#paymentButtons{
+  display: flex;
+  padding-right: 10px;
+  justify-content: center;
+}
+#backButton{
+  padding-right: 5px;
+}
+#payButton{
+  padding-left: 5px;
 }
 
-.example-full-width {
-  width: 100%;
+form{
+
+  padding: 15px;
 }
 
-td {
-  padding-right: 8px;
+.chooseThePayment{
+  display: flex;
+  justify-content: space-around;
 }
+
 

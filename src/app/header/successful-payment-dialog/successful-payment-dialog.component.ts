@@ -18,6 +18,7 @@ export class SuccessfulPaymentDialogComponent {
   cartList$! : Observable<any>;
   isTrue$ : Observable<boolean>;
   cart = inject(MatDialogRef<CartComponent>)
+  cardTrue :Boolean = false;
   constructor(private store: Store<AppState>){
 
   }
@@ -32,16 +33,19 @@ export class SuccessfulPaymentDialogComponent {
     this.isTrue$ = this.cartList$.pipe(
       map(cartList => cartList.length === 0)
     );
-    this.cardDatasIsTrue = false;
+    this.cardTrue = false;
   }
 
   close(){
-    this.cardDatasIsTrue = false;
     this.cart.close()
+    this.cardTrue = false
   }
 
-  back(){
-    this.cardDatasIsTrue = false;
+  isCardTrue(){
+    this.cardTrue = true
+  }
+  isCardNotTrue(){
+    this.cardTrue = false
   }
 
 }
