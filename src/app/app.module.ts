@@ -25,7 +25,7 @@ import { CartComponent } from './header/cart/cart/cart.component';
 import { SuccessfulPaymentDialogComponent } from './header/successful-payment-dialog/successful-payment-dialog.component';
 import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
-import {FormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 
 
 
@@ -63,7 +63,8 @@ import {FormsModule} from '@angular/forms';
     StoreModule.forRoot({productt: productReducer}),
     MatInputModule,
     MatFormFieldModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
 
   ],
   providers: [

@@ -5,21 +5,23 @@
   </mat-dialog-content>
 
   <ng-template #isNotTrue style="text-align: center;">
-      <form >
+      <form [formGroup]="formGroup"  #f="ngForm" [ngClass]="formGroup.invalid ? 'invalid' : 'valid'">
         <h2>Adatok beírása:</h2>
             <label for="firstName">Vezetéknév</label>
             <input
             type="text"
             name="firstName"
+            id="firstName"
+            formControlName ="firstName"
             matInput
-            required
             >
             <label for="secondName">Keresztnév</label>
             <input
             type="text"
             name="secondName"
+            id="secondName"
+            formControlName="secondName"
             matInput
-            required
             >
 
           <div>
@@ -27,9 +29,10 @@
             <textarea
             type="text"
             name="address"
+            id="address"
+            formControlName="address"
             style="display: block;"
             matInput
-            required
 
             ></textarea>
           </div>
@@ -38,18 +41,20 @@
             <input
             type="text"
             name="city"
+            id="city"
+            formControlName="city"
             matInput
             placeholder="Budapest"
-            required
             >
             <label for="postCode">Irányítószám</label>
             <input
-            name="c"
+            name="postCode"
+            id="postCode"
+            formControlName="postCode"
             matInput
             #postalCode
-            maxlength="4"
             placeholder="1234"
-            required
+            maxlength="4"
             >
 
           <hr>
@@ -64,7 +69,7 @@
             <div>
 
               <label for="paymentOnDelivery">Utánvétel</label>
-              <input class="radioButtons" (click)="isCardNotTrue()" name="paymentOptions" type="radio">
+              <input class="radioButtons"  (click)="isCardNotTrue()" name="paymentOptions" type="radio">
             </div>
           </div>
 
@@ -74,38 +79,45 @@
 
             <label for="cardUserName">KÁRTYÁN SZEREPLŐ NÉV</label>
             <input
-            id="cardDatas"
+            id="cardUserName"
             name="cardUserName"
-            required
+            formControlName="cardUserName"
+            type="text"
             >
 
             <label for="cardNumber">KÁRTYASZÁM</label>
             <input
-            id="cardDatas"
+            id="cardNumber"
             name="cardNumber"
-            required
-
+            formControlName="cardNumber"
+            maxlength="19"
             >
             <div id="threeCardDatasDiv">
               <label>DATE</label>
               <input
-              id="threeCardDatas"
-              required
+              class="threeCardDatas"
+              id="cardDataDate"
+              formControlName="cardDataDate"
+              maxlength="4"
 
               >
 
               <label>MM/YY</label>
               <input
-              id="threeCardDatas"
-              required
+              class="threeCardDatas"
+              id="cardDataMonthYear"
+              formControlName="cardDateMonthYear"
+              maxlength="5"
 
               >
 
               <label>CVC</label>
               <input
-              id="threeCardDatas"
+              class="threeCardDatas"
               maxlength="3"
-              required
+              id="cardDataCvc"
+              formControlName="cardDateCvc"
+              maxlength="3"
 
               >
             </div>
@@ -116,7 +128,7 @@
               <button mat-flat-button  class="paymentActionButtons" (click)="close()">Bezár</button>
             </div>
           <div id="payButton">
-            <button  mat-flat-button class="paymentActionButtons" (click)="payment()">Fizetés</button>
+            <button  mat-flat-button class="paymentActionButtons"  (click)="payment()"  >Fizetés</button>
           </div>
           </div>
 

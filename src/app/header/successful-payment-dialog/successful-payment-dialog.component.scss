@@ -31,7 +31,7 @@ input:not(.radioButtons){
   border-radius: 4px;
   box-sizing: border-box;
 }
-#threeCardDatas{
+.threeCardDatas{
   width: 22%;
   padding: 12px 20px;
   margin: 8px 0;
@@ -64,6 +64,11 @@ form{
 .chooseThePayment{
   display: flex;
   justify-content: space-around;
+}
+
+
+input.ng-invalid.ng-touched{
+  border: 1px solid red;
 }
 
 
